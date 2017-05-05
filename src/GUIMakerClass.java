@@ -9,6 +9,8 @@ import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
+//branch (refactoring_no_1)
+
 public class GUIMakerClass {
 	
 	//Globala variabler och objekt

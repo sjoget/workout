@@ -1,44 +1,45 @@
+//branch (refactoring_no_1)
+
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 //import java.awt.LayoutManager;
-import java.awt.List;
+//import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
-
-//branch (refactoring_no_1)
+//import javax.swing.border.TitledBorder;
 
 public class GUIMakerClass {
 	
 	//Globala variabler och objekt
 	//Frames
-	JFrame myFrame = new JFrame("Min GUI app");
+	JFrame myFrame = new JFrame("Tränings GUI");
+
+	//Text fält
+	JTextField textintervall = new JTextField("Välj sekunder för träningsintervall");
+	JTextField texttotaltid = new JTextField("Total tid");
+	
 	//Buttons
-	JButton okButton = new JButton();
-	JButton button2 = new JButton("Cancel");
-	JButton button3 = new JButton("Button 3");
-	JButton buttonintervall = new JButton("Välj sekunder för träningsintervall");	
+//	JButton buttonintervall = new JButton("Välj sekunder för träningsintervall");
 	JButton buttonvila = new JButton("Välj sekunder för vila");	
 	JButton buttonreps = new JButton("Välj antal reps");	
+	JButton buttontotaltime = new JButton("Tryck här för att räkna ut total tid");	
 	//Panels
-	JPanel panel1 = new JPanel();
-	JPanel panel2 = new JPanel();
-	JPanel panel3 = new JPanel();
-	JPanel panel4 = new JPanel();
-	JPanel panel5 = new JPanel();
-	JPanel panel6 = new JPanel();
+	JPanel panel_intervall = new JPanel(new BorderLayout(3,3));
+	JPanel panel_vila = new JPanel(new BorderLayout(3,3));
+	JPanel panel_reps = new JPanel(new BorderLayout(3,3));
+	JPanel panel_totaltid = new JPanel(new BorderLayout(3,3));
 	//Lists
-	//awk list
-	List secondsList = new List(6, false);
 	//dropdown list: JComboBox 
 	JComboBox<Integer> secondsBoxJComboBox = new JComboBox<Integer>();
 	JComboBox<Integer> secondsVilaBoxJComboBox = new JComboBox<Integer>();
 	JComboBox<Integer> RepsBoxJComboBox = new JComboBox<Integer>();
-	//träningstid lista
-	
+	JComboBox<Integer> TotalTimeBoxJComboBox = new JComboBox<Integer>();
 	
 	//Date
 	Date date = new Date();
@@ -46,22 +47,18 @@ public class GUIMakerClass {
 	//Default constructor
 	public GUIMakerClass(){};
 	
-	//Sekunder till dropdown 
-		
 	//Create GUI objects and buttons
 	public void CreateGUI(){
+	//textfält
+		textintervall.setForeground(Color.red);
+		textintervall.setFont(new java.awt.Font("Arial", Font.ITALIC | Font.BOLD, 14));
+		textintervall.setBackground(Color.cyan);
+		
+		
 	//Buttons
-		//okButton här under
-		okButton.setText("Okay");
-		okButton.setToolTipText("Button2");
-		//button2
-		button2.setToolTipText("Button2");
-		//button3
-		button3.setToolTipText("Button 3");
-		button3.setForeground(Color.red);
 		//buttonintervall
-		buttonintervall.setToolTipText("Button 4");
-		buttonintervall.setForeground(Color.red);
+//		buttonintervall.setToolTipText("Button 4");
+//		buttonintervall.setForeground(Color.red);
 		//buttonvila
 		buttonvila.setToolTipText("Button 5");
 		buttonvila.setForeground(Color.red);
@@ -70,51 +67,28 @@ public class GUIMakerClass {
 
 		//actionListeners
 		GUIListener myListener = new GUIListener();
-		okButton.addActionListener(myListener);
-		button2.addActionListener(myListener);
-		button3.addActionListener(myListener);
-		buttonintervall.addActionListener(myListener);		
+//		buttonintervall.addActionListener(myListener);		
 		buttonvila.addActionListener(myListener);		
 		buttonreps.addActionListener(myListener);		
-		secondsList.addActionListener(myListener);
-		secondsBoxJComboBox.addActionListener(myListener);
-		secondsVilaBoxJComboBox.addActionListener(myListener);
-		
+		buttontotaltime.addActionListener(myListener);		
+//		secondsBoxJComboBox.addActionListener(myListener);
+//		secondsVilaBoxJComboBox.addActionListener(myListener);
+			
 	//panels
-		//panel1
-		panel1.add(okButton);
-		panel1.add(button2);
-		panel1.setSize(100,50);
-		//panel2
-		panel2.setBorder(new TitledBorder("Panel 2 border"));
-		panel2.add(button3);
-		//panel3
-//		panel3.setBorder(new TitledBorder("Panel 3 border"));
-		panel3.add(secondsBoxJComboBox);
-		panel3.add(buttonintervall);
-		//panel4
-		panel4.add(secondsVilaBoxJComboBox);
-		panel4.add(buttonvila);
-		panel5.add(RepsBoxJComboBox);
-		panel5.add(buttonreps);
-//		panel6.add(secondsTotalList);
-//		panel4.setLayout(new BoxLayout(panel4, BoxLayout.X_AXIS));
-//		panel4.setLayout(new BoxLayout(panel4, 0));
+		panel_intervall.add(secondsBoxJComboBox, BorderLayout.WEST);
+//		panel_intervall.add(secondsBoxJComboBox, new JComboBox<>(Dimension(200, 200);
+//		panel_intervall.add(buttonintervall, BorderLayout.WEST);
+		panel_intervall.add(textintervall);
+				
+		panel_vila.add(secondsVilaBoxJComboBox, BorderLayout.WEST);
+		panel_vila.add(buttonvila);
 		
-	//Lists
-		//awk sekundlista
-//		secondsList.add("10s");
-//		secondsList.add("20s");
-//		secondsList.remove("50");	//ta bort 
-		//JComboBox träning
+		panel_reps.add(RepsBoxJComboBox, BorderLayout.WEST);
+		panel_reps.add(buttonreps);
 		
-//		secondsBoxJComboBox.addItem(10);
-//		secondsBoxJComboBox.addItem(20);
-//		secondsBoxJComboBox.addItem(30);
-//		secondsBoxJComboBox.addItem(40);
-//		secondsBoxJComboBox.addItem(50);
-//		secondsBoxJComboBox.addItem(60);
-//		
+//		panel_totaltid.add(TotalTimeBoxJComboBox);
+		panel_totaltid.add(buttontotaltime);
+		panel_totaltid.add(texttotaltid, BorderLayout.WEST);
 
 		int sekunder = 0;
 		for (int i = 0; i < 6; i++) {
@@ -123,94 +97,50 @@ public class GUIMakerClass {
 			secondsVilaBoxJComboBox.addItem(sekunder);
 		}
 
-		//Vila list
-//		secondsVilaBoxJComboBox.addItem(10);
-//		secondsVilaBoxJComboBox.addItem(20);
-//		secondsVilaBoxJComboBox.addItem(30);
-//		secondsVilaBoxJComboBox.addItem(40);
-//		secondsVilaBoxJComboBox.addItem(50);
-//		secondsVilaBoxJComboBox.addItem(60);
 		//Reps list
 		int reps = 0;
 		for (int i = 0; i < 6; i++) {
 			reps++;
 			RepsBoxJComboBox.addItem(reps);
 		}
-//		RepsBoxJComboBox.addItem(1);
-//		RepsBoxJComboBox.addItem(2);
-//		RepsBoxJComboBox.addItem(3);
-//		RepsBoxJComboBox.addItem(4);
-//		RepsBoxJComboBox.addItem(5);
-//		RepsBoxJComboBox.addItem(6);
-//		int i = (int) secondsVilaBoxJComboBox.getSelectedItem();
-
-//		int sekunderIntervall = (int) secondsBoxJComboBox.getSelectedItem();
-//		int sekunderVila = (int) secondsVilaBoxJComboBox.getSelectedItem();
-//		int inputReps = (int) secondsBoxJComboBox.getSelectedItem();
-//		int sekunderTot = sekunderVila + sekunderIntervall + inputReps;
-//		System.out.println(sekunderTot);
 		
 	//frames
 		//myFrame
-//		myFrame.add(panel1);
-//		myFrame.add(panel2);  					//lägg till panel 2
-		myFrame.add(panel3);  					//lägg till panel 3
-		myFrame.add(panel4);  					//lägg till panel 4
-		myFrame.add(panel5);  					//lägg till panel 5
-		myFrame.add(panel6);  					//lägg till panel 6
+//		myFrame.add(textintervall);
+		myFrame.add(panel_intervall);  					//lägg till panel 
+		myFrame.add(panel_vila);  					
+		myFrame.add(panel_reps);  					
+		myFrame.add(panel_totaltid);  					
 		myFrame.setSize(600, 300);	
 //		myFrame.setLocationRelativeTo(null);  	//frame placeras i mitten
 		myFrame.setLocation(0, 0);  			//frame placeras uppe till vänster
 		myFrame.setLayout(new GridLayout(5,4));
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.setVisible(true);
-//		myFrame.add(secondsList);
-		//myFrame.add(secondsBoxJComboBox);
+		}
 	
+	private Object Dimension(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 	public class GUIListener implements ActionListener{
 		
 		@Override
 		
 		//metoden här under aktiveras när actionevent e triggas
 		public void actionPerformed(ActionEvent e) {
-			//här händer det du vill göra med input
-			if (e.getSource() == okButton){
-				//om OK knappen trycks
-				System.out.println("okButton");
-			} 
-//			else if (e.getSource() == button2){
-//				//om button2 knappen trycks
-//				System.out.println("button2");
-//			} 
-//			else if (e.getSource() == button3){
-//				//om button3 knappen trycks
-//				System.out.println("button3");
-//			}
-//			else if (e.getSource() == secondsList){
-//				//om listan trycks
-//				System.out.println(secondsList.getSelectedItem());
-//				System.out.println(date);
-//			}
-//			else if (e.getSource() == secondsBoxJComboBox){
-//				//om listan trycks
-//				System.out.println(secondsBoxJComboBox.getSelectedItem());
-//			}
-			else if (e.getSource() == buttonintervall){
-				//om listan trycks
+			if (e.getSource() == textintervall){
 				System.out.println(secondsBoxJComboBox.getSelectedItem());
 			}
 			else if (e.getSource() == buttonvila){
-				//om listan trycks
 				System.out.println(secondsVilaBoxJComboBox.getSelectedItem());
 			}
 			else if (e.getSource() == buttonreps){
-				//om listan trycks
-//				System.out.println(RepsBoxJComboBox.getSelectedItem());
-//				int sekunderTot = (int) secondsVilaBoxJComboBox.getSelectedItem() + (int) secondsBoxJComboBox.getSelectedItem() + (int) RepsBoxJComboBox.getSelectedItem();
-//				System.out.println(sekunderTot);
-				
+				System.out.println(RepsBoxJComboBox.getSelectedItem());
+			}
+			else if (e.getSource() == buttontotaltime){
+					//om listan trycks
 				int sekunderIntervall = (int) secondsBoxJComboBox.getSelectedItem();
 				int sekunderVila = (int) secondsVilaBoxJComboBox.getSelectedItem();
 				int inputReps = (int) RepsBoxJComboBox.getSelectedItem();
@@ -218,12 +148,10 @@ public class GUIMakerClass {
 				int minuterTot = sekunderTot/60;
 				int sekunderModulo = sekunderTot % 60;
 				
-//				System.out.println(sekunderIntervall);
-//				System.out.println(sekunderVila);
-//				System.out.println(inputReps);
-//				System.out.println(sekunderTot);
-				System.out.println(minuterTot + (" minuter"));
-				System.out.println(sekunderModulo + (" Sekunder"));
+				System.out.println(minuterTot + (" minuter ") + sekunderModulo + (" Sekunder"));
+//				System.out.println(sekunderModulo + (" Sekunder"));
+				
+				
 
 
 			}

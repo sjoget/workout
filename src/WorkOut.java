@@ -4,7 +4,12 @@ public class WorkOut {
 		
 		GUIMakerClass myGUI = new GUIMakerClass();
 		myGUI.CreateGUI();
+
+//		GUITableMakerClass tableGUI = new GUITableMakerClass();
+		GUITableMakerClass.createAndShowGUI();
+
 	}
+
 
 }
 

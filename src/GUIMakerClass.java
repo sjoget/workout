@@ -21,11 +21,12 @@ public class GUIMakerClass {
 	JFrame myFrame = new JFrame("Tränings GUI");
 
 	//Text fält
-	JTextField textintervall = new JTextField("Välj sekunder för träningsintervall");
-	JTextField texttotaltid = new JTextField("Total tid");
+//	JTextField textintervall = new JTextField("Välj sekunder för träningsintervall");
+//	JTextField texttotaltid = new JTextField("Total tid");
+//	JTextField texttotaltid = new JTextField("Total tid");
 	
 	//Buttons
-//	JButton buttonintervall = new JButton("Välj sekunder för träningsintervall");
+	JButton buttonintervall = new JButton("Välj sekunder för träningsintervall");
 	JButton buttonvila = new JButton("Välj sekunder för vila");	
 	JButton buttonreps = new JButton("Välj antal reps");	
 	JButton buttontotaltime = new JButton("Tryck här för att räkna ut total tid");	
@@ -50,16 +51,14 @@ public class GUIMakerClass {
 	//Create GUI objects and buttons
 	public void CreateGUI(){
 	//textfält
-		textintervall.setForeground(Color.red);
-		textintervall.setFont(new java.awt.Font("Arial", Font.ITALIC | Font.BOLD, 14));
-		textintervall.setBackground(Color.cyan);
+//		textintervall.setForeground(Color.red);
+//		textintervall.setFont(new java.awt.Font("Arial", Font.ITALIC | Font.BOLD, 14));
+//		textintervall.setBackground(Color.cyan);
 		
 		
 	//Buttons
-		//buttonintervall
-//		buttonintervall.setToolTipText("Button 4");
-//		buttonintervall.setForeground(Color.red);
-		//buttonvila
+    	buttonintervall.setToolTipText("Button 4");
+		buttonintervall.setForeground(Color.red);
 		buttonvila.setToolTipText("Button 5");
 		buttonvila.setForeground(Color.red);
 		buttonreps.setToolTipText("Button 6");
@@ -67,7 +66,7 @@ public class GUIMakerClass {
 
 		//actionListeners
 		GUIListener myListener = new GUIListener();
-//		buttonintervall.addActionListener(myListener);		
+		buttonintervall.addActionListener(myListener);		
 		buttonvila.addActionListener(myListener);		
 		buttonreps.addActionListener(myListener);		
 		buttontotaltime.addActionListener(myListener);		
@@ -76,9 +75,9 @@ public class GUIMakerClass {
 			
 	//panels
 		panel_intervall.add(secondsBoxJComboBox, BorderLayout.WEST);
+		panel_intervall.add(buttonintervall);
 //		panel_intervall.add(secondsBoxJComboBox, new JComboBox<>(Dimension(200, 200);
-//		panel_intervall.add(buttonintervall, BorderLayout.WEST);
-		panel_intervall.add(textintervall);
+//		panel_intervall.add(textintervall);
 				
 		panel_vila.add(secondsVilaBoxJComboBox, BorderLayout.WEST);
 		panel_vila.add(buttonvila);
@@ -86,9 +85,9 @@ public class GUIMakerClass {
 		panel_reps.add(RepsBoxJComboBox, BorderLayout.WEST);
 		panel_reps.add(buttonreps);
 		
-//		panel_totaltid.add(TotalTimeBoxJComboBox);
+		panel_totaltid.add(TotalTimeBoxJComboBox);
 		panel_totaltid.add(buttontotaltime);
-		panel_totaltid.add(texttotaltid, BorderLayout.WEST);
+//		panel_totaltid.add(texttotaltid, BorderLayout.WEST);
 
 		int sekunder = 0;
 		for (int i = 0; i < 6; i++) {
@@ -130,16 +129,17 @@ public class GUIMakerClass {
 		
 		//metoden här under aktiveras när actionevent e triggas
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == textintervall){
-				System.out.println(secondsBoxJComboBox.getSelectedItem());
-			}
-			else if (e.getSource() == buttonvila){
-				System.out.println(secondsVilaBoxJComboBox.getSelectedItem());
-			}
-			else if (e.getSource() == buttonreps){
-				System.out.println(RepsBoxJComboBox.getSelectedItem());
-			}
-			else if (e.getSource() == buttontotaltime){
+//			if (e.getSource() == textintervall){
+//				System.out.println(secondsBoxJComboBox.getSelectedItem());
+//			}
+//			else if (e.getSource() == buttonvila){
+//				System.out.println(secondsVilaBoxJComboBox.getSelectedItem());
+//			}
+//			else if (e.getSource() == buttonreps){
+//				System.out.println(RepsBoxJComboBox.getSelectedItem());
+//			}
+//			else if (e.getSource() == buttontotaltime){
+			if (e.getSource() == buttontotaltime){
 					//om listan trycks
 				int sekunderIntervall = (int) secondsBoxJComboBox.getSelectedItem();
 				int sekunderVila = (int) secondsVilaBoxJComboBox.getSelectedItem();
@@ -149,9 +149,9 @@ public class GUIMakerClass {
 				int sekunderModulo = sekunderTot % 60;
 				
 				System.out.println(minuterTot + (" minuter ") + sekunderModulo + (" Sekunder"));
-//				System.out.println(sekunderModulo + (" Sekunder"));
 				
-				
+				GUITotalGo goGUI = new GUITotalGo();
+				goGUI.CreateGUI();
 
 
 			}

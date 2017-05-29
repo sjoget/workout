@@ -1,3 +1,5 @@
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -13,6 +15,7 @@ public class GUITableMakerClass extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 //public class SimpleTableDemo extends JPanel {
+private JComboBox combobox;
 
     public GUITableMakerClass() {
     	
@@ -28,6 +31,11 @@ public class GUITableMakerClass extends JPanel {
 	    	new Integer(3), new Integer(4)}
         };
 
+        //        Object[][] data = {
+//	    {new Integer(1), new Integer(2),
+//	    	new Integer(3), new Integer(4)}
+//        };
+
         final JTable table = new JTable(data, columnNames);
         table.setPreferredScrollableViewportSize(new Dimension(500, 70));
         table.setFillsViewportHeight(true);
@@ -38,15 +46,15 @@ public class GUITableMakerClass extends JPanel {
     }
 
     public static void createAndShowGUI() {
-        JFrame frame = new JFrame("Tabell");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame tableFrame = new JFrame("Tabell");
+        tableFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         GUITableMakerClass newContentPane = new GUITableMakerClass();
         newContentPane.setOpaque(true); 
-        frame.setContentPane(newContentPane);
+        tableFrame.setContentPane(newContentPane);
 
-        frame.pack();
-        frame.setVisible(true);
+        tableFrame.pack();
+        tableFrame.setVisible(true);
     }
 
     public static void main(String[] args) {

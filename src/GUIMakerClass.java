@@ -150,6 +150,10 @@ public class GUIMakerClass {
 				
 				System.out.println(minuterTot + (" minuter ") + sekunderModulo + (" Sekunder"));
 				
+				//Write file
+
+				
+				
 				GUITotalGo goGUI = new GUITotalGo();
 				goGUI.CreateGUI();
 

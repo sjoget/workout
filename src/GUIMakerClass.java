@@ -2,8 +2,6 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 //import java.awt.LayoutManager;
 //import java.awt.List;
@@ -24,8 +22,6 @@ public class GUIMakerClass {
 
 	//Text fält
 //	JTextField textintervall = new JTextField("Välj sekunder för träningsintervall");
-//	JTextField texttotaltid = new JTextField("Total tid");
-//	JTextField texttotaltid = new JTextField("Total tid");
 	
 	//Buttons
 	JButton buttonintervall = new JButton("Välj sekunder för träningsintervall");
@@ -72,8 +68,6 @@ public class GUIMakerClass {
 		buttonvila.addActionListener(myListener);		
 		buttonreps.addActionListener(myListener);		
 		buttontotaltime.addActionListener(myListener);		
-//		secondsBoxJComboBox.addActionListener(myListener);
-//		secondsVilaBoxJComboBox.addActionListener(myListener);
 			
 	//panels
 		panel_intervall.add(secondsBoxJComboBox, BorderLayout.WEST);
@@ -92,17 +86,18 @@ public class GUIMakerClass {
 //		panel_totaltid.add(texttotaltid, BorderLayout.WEST);
 
 		int sekunder = 0;
-		for (int i = 0; i < 6; i++) {
-			sekunder = sekunder + 10;
+		for (int i = 0; i < 7; i++) {
 			secondsBoxJComboBox.addItem(sekunder);
 			secondsVilaBoxJComboBox.addItem(sekunder);
+//			sekunder = sekunder + 10;  Ändra
+			sekunder = sekunder + 1;
 		}
 
 		//Reps list
 		int reps = 0;
-		for (int i = 0; i < 6; i++) {
-			reps++;
+		for (int i = 0; i < 20; i++) {
 			RepsBoxJComboBox.addItem(reps);
+			reps++;
 		}
 		
 	//frames
@@ -124,19 +119,8 @@ public class GUIMakerClass {
 		
 		public InputParameters inputParameters = new InputParameters();
 
-		//metoden här under aktiveras när actionevent e triggas
 		@Override
 		public void actionPerformed(ActionEvent e) {
-//			if (e.getSource() == textintervall){
-//				System.out.println(secondsBoxJComboBox.getSelectedItem());
-//			}
-//			else if (e.getSource() == buttonvila){
-//				System.out.println(secondsVilaBoxJComboBox.getSelectedItem());
-//			}
-//			else if (e.getSource() == buttonreps){
-//				System.out.println(RepsBoxJComboBox.getSelectedItem());
-//			}
-//			else if (e.getSource() == buttontotaltime){
 
 			if (e.getSource() == buttontotaltime){
 
@@ -147,34 +131,33 @@ public class GUIMakerClass {
 				int sekunderTot = (( sekunderVila + sekunderIntervall ) * inputReps);
 				int minuterTot = sekunderTot/60;
 				int sekunderModulo = sekunderTot % 60;
-				
-				System.out.println(minuterTot + (" minuter ") + sekunderModulo + (" Sekunder"));
-				
+						
 				inputParameters.sekunderIntervall = sekunderIntervall;
 				inputParameters.sekunderVila = sekunderVila;
 				inputParameters.inputReps = inputReps;
 				inputParameters.minuterTot = minuterTot;
+				inputParameters.sekunderModulo = sekunderModulo;
 				
-				//Write file
-				
-//			        try {
-//			            FileWriter writer = new FileWriter("input_tider.txt", true);
-//			            writer.write("Minuter totalt");
-//			            writer.write("\r\n");  
-//			            writer.write(minuterTot + " ");
-//			            writer.close();
-//			        } catch (IOException f) {
-//			            f.printStackTrace();
-//			        }			
-//				
 				GUITotalGo goGUI = new GUITotalGo();
 				goGUI.CreateGUI();
 
+				//Write file
+				
+//		        try {
+//		            FileWriter writer = new FileWriter("input_tider.txt", true);
+//		            writer.write("Minuter totalt");
+//		            writer.write("\r\n");  
+//		            writer.write(minuterTot + " ");
+//		            writer.close();
+//		        } catch (IOException f) {
+//		            f.printStackTrace();
+//		        }			
+//			
 
 			}
 			
-		} //slut action performed method
+		} 
 		
-	} //slut myGUIListener class
+	} 
 
-} //slut GUIMakerClass
+} 

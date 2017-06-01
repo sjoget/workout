@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 //import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 
 import javax.swing.*;
@@ -118,16 +120,12 @@ public class GUIMakerClass {
 		myFrame.setVisible(true);
 		}
 	
-	private Object Dimension(int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public class GUIListener implements ActionListener{
 		
-		@Override
-		
+		public InputParameters inputParameters = new InputParameters();
+
 		//metoden här under aktiveras när actionevent e triggas
+		@Override
 		public void actionPerformed(ActionEvent e) {
 //			if (e.getSource() == textintervall){
 //				System.out.println(secondsBoxJComboBox.getSelectedItem());
@@ -139,21 +137,36 @@ public class GUIMakerClass {
 //				System.out.println(RepsBoxJComboBox.getSelectedItem());
 //			}
 //			else if (e.getSource() == buttontotaltime){
+
 			if (e.getSource() == buttontotaltime){
-					//om listan trycks
+
 				int sekunderIntervall = (int) secondsBoxJComboBox.getSelectedItem();
 				int sekunderVila = (int) secondsVilaBoxJComboBox.getSelectedItem();
 				int inputReps = (int) RepsBoxJComboBox.getSelectedItem();
+				
 				int sekunderTot = (( sekunderVila + sekunderIntervall ) * inputReps);
 				int minuterTot = sekunderTot/60;
 				int sekunderModulo = sekunderTot % 60;
 				
 				System.out.println(minuterTot + (" minuter ") + sekunderModulo + (" Sekunder"));
 				
+				inputParameters.sekunderIntervall = sekunderIntervall;
+				inputParameters.sekunderVila = sekunderVila;
+				inputParameters.inputReps = inputReps;
+				inputParameters.minuterTot = minuterTot;
+				
 				//Write file
-
 				
-				
+//			        try {
+//			            FileWriter writer = new FileWriter("input_tider.txt", true);
+//			            writer.write("Minuter totalt");
+//			            writer.write("\r\n");  
+//			            writer.write(minuterTot + " ");
+//			            writer.close();
+//			        } catch (IOException f) {
+//			            f.printStackTrace();
+//			        }			
+//				
 				GUITotalGo goGUI = new GUITotalGo();
 				goGUI.CreateGUI();
 

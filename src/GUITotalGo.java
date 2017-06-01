@@ -9,12 +9,14 @@ import javax.swing.*;
 
 public class GUITotalGo {
 	
+	private static final Object Integer = null;
+
 	//Globala variabler och objekt
 	//Frames
 	JFrame goFrame = new JFrame("GO GUI");
 	
 	//Panels
-	JPanel panel_go = new JPanel(new BorderLayout(3,3));
+	JPanel panelGo = new JPanel(new BorderLayout(3,3));
 
 	//Buttons
 	JButton buttongo = new JButton("GO");
@@ -24,8 +26,17 @@ public class GUITotalGo {
 	
 	//Create GUI objects and buttons
 	public void CreateGUI(){
+	
+		//Text field
+		JFormattedTextField totalTimeField = new JFormattedTextField(Integer);
+		totalTimeField.setValue(100);
 		
-	//Buttons
+//		rateField = new JFormattedTextField(percentFormat);
+//		rateField.setValue(new Double(rate));
+//		rateField.setColumns(10);
+//		rateField.addPropertyChangeListener("value", this);
+
+		//Buttons
 		buttongo.setForeground(Color.red);
 
 		//actionListeners
@@ -33,14 +44,15 @@ public class GUITotalGo {
 		buttongo.addActionListener(myListener);		
 
 	//panels
-		panel_go.add(buttongo);
+		panelGo.add(buttongo);
 					
 	//frames
 		//goFrame
-		goFrame.add(panel_go);  					
+		goFrame.add(panelGo); 
+		goFrame.add(totalTimeField);
 		goFrame.setSize(600, 300);	
-//		goFrame.setLocationRelativeTo(null);  	//frame placeras i mitten
-		goFrame.setLocation(0, 0);  			//frame placeras uppe till vänster
+		goFrame.setLocationRelativeTo(null);  	//frame placeras i mitten
+//		goFrame.setLocation(0, 0);  			//frame placeras uppe till vänster
 		goFrame.setLayout(new GridLayout(5,4));
 		goFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		goFrame.setVisible(true);
@@ -53,7 +65,7 @@ public class GUITotalGo {
 		//metoden här under aktiveras när actionevent e triggas
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == buttongo){
-					//om listan trycks
+				
 				
 
 			}		

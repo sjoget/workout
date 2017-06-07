@@ -2,7 +2,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class PaintPictureRest extends JFrame {
+public class PaintPictureGo extends JFrame {
 	
 	/**
 	 * 
@@ -11,13 +11,13 @@ public class PaintPictureRest extends JFrame {
 	private MinCanvas canvas = new MinCanvas();
 	
 	public static void main(String[] args) {
-		PaintPictureRest rbk = new PaintPictureRest();
+		PaintPictureGo rbk = new PaintPictureGo();
 		}
 	
-	public PaintPictureRest() {
+	public PaintPictureGo() {
 		setLayout(new BorderLayout());
 		setSize(500, 375);
-		setTitle("Vila");
+		setTitle("Träna");
 		add("Center", canvas);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		setLocationRelativeTo(null);		
@@ -33,7 +33,7 @@ public class PaintPictureRest extends JFrame {
 
 		@Override
 		public void paint(Graphics g) {
-			g.drawString("Vila", 50, 50);
+			g.drawString("Träna", 50, 50);
 //			Image bowlingklot1 = new ImageIcon("bilder/bowlingklot1.jpg").getImage();
 //			g.drawImage(bowlingklot1, 130, 100, this);
 		}

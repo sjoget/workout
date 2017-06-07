@@ -71,7 +71,7 @@ public class GUITotalGo {
 				{	
 					try {
 						System.out.println("Träna");
-						PaintPictureRest.main(null);
+						PaintPictureGo.main(null);
 						Timer.timer(intervall);
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block

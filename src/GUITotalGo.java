@@ -80,6 +80,7 @@ public class GUITotalGo {
 	
 					try {
 						System.out.println("Vila");
+						PaintPictureRest.main(null);
 						Timer.timer(vila);
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
